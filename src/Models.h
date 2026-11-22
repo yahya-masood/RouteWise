@@ -4,9 +4,9 @@
 
 #include <string>
 
-namespace routewise {
+using namespace std;
 
-enum class ParcelStatus {
+enum ParcelStatus {
     Registered,
     Pending,
     InTransit,
@@ -15,22 +15,19 @@ enum class ParcelStatus {
 
 struct Customer {
     int customerId;
-    std::string name;
-    std::string phone;
-    std::string address;
+    string name;
+    string phone;
+    string address;
 };
 
 struct Parcel {
     int trackingId;
     int customerId;
-    std::string source;
-    std::string destination;
+    string source;
+    string destination;
     double weight;
     int priority;
     ParcelStatus status;
     int arrivalOrder;
 };
-
-}
-
 #endif
