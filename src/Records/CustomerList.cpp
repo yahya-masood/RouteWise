@@ -72,7 +72,6 @@ void CustomerList::display() const {
         cout << "Phone: " << temp->data.phone << endl;
         cout << "Address: " << temp->data.address << endl;
 
-        cout << "----------------------" << endl;
 
         temp = temp->next;
     }
