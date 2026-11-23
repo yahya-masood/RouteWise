@@ -71,8 +71,12 @@ void CustomerList::display() const {
         cout << "Name: " << temp->data.name << endl;
         cout << "Phone: " << temp->data.phone << endl;
         cout << "Address: " << temp->data.address << endl;
+        cout << "----------------------" << endl;
 
 
         temp = temp->next;
     }
+}
+int CustomerList::getCount() const {
+    return count;
 }

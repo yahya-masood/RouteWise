@@ -2,7 +2,7 @@
 #ifndef CUSTOMERLIST_H
 #define CUSTOMERLIST_H
 
-#include "src/Models.h"
+#include "../Models.h"
 
 class CustomerList {
 private:
