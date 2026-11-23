@@ -1,6 +1,6 @@
 
 #include "CustomerList.h"
-
+#include <iostream>
 using namespace std;
 
 CustomerList::CustomerList() {
@@ -39,4 +39,41 @@ bool CustomerList::add(const Customer& customer) {
     count++;
 
     return true;
+}
+Customer* CustomerList::find(int customerId) {
+
+    Node* temp = head;
+
+    while (temp != NULL) {
+
+        if (temp->data.customerId == customerId) {
+            return &(temp->data);
+        }
+
+        temp = temp->next;
+    }
+
+    return NULL;
+}
+
+void CustomerList::display() const {
+
+    Node* temp = head;
+
+    if (head == NULL) {
+        cout << "No customers found." << endl;
+        return;
+    }
+
+    while (temp != NULL) {
+
+        cout << "Customer ID: " << temp->data.customerId << endl;
+        cout << "Name: " << temp->data.name << endl;
+        cout << "Phone: " << temp->data.phone << endl;
+        cout << "Address: " << temp->data.address << endl;
+
+        cout << "----------------------" << endl;
+
+        temp = temp->next;
+    }
 }
