@@ -90,3 +90,26 @@ bool HashTable::insert(Parcel* parcel) {
     return true;
 }
 
+Parcel* HashTable::search(int trackingId) const {
+
+    int index = hashFunction(trackingId);
+
+    for (int i = 0; i < capacity; i++) {
+
+        if (table[index] == NULL) {
+            return NULL;
+        }
+
+        if (table[index]->trackingId == trackingId) {
+            return table[index];
+        }
+
+        index = (index + 1) % capacity;
+    }
+
+    return NULL;
+}
+int HashTable::getCount() const {
+
+    return count;
+}
