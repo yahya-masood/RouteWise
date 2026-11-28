@@ -402,3 +402,66 @@ void Graph::shortestPath(string source, string destination) const
          << distance[dest] << " km" << endl;
 }
 
+// Minimum Spanning Tree using Prim
+void Graph::minimumSpanningTree() const
+{
+    if (cityCount == 0)
+    {
+        cout << "Network is empty!" << endl;
+        return;
+    }
+
+    bool visited[MAX] = {false};
+
+    int edgesCount = 0;
+    double totalDistance = 0;
+
+    visited[0] = true;
+
+    cout << "\n===== MINIMUM SPANNING TREE =====" << endl;
+
+    while (edgesCount < cityCount - 1)
+    {
+        double minimum = 999999;
+
+        int from = -1;
+        int to = -1;
+
+        for (int i = 0; i < cityCount; i++)
+        {
+            if (visited[i])
+            {
+                for (int j = 0; j < cityCount; j++)
+                {
+                    if (!visited[j] && matrix[i][j] > 0)
+                    {
+                        if (matrix[i][j] < minimum)
+                        {
+                            minimum = matrix[i][j];
+                            from = i;
+                            to = j;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (to == -1)
+        {
+            cout << "Network is disconnected!" << endl;
+            return;
+        }
+
+        visited[to] = true;
+
+        cout << cities[from] << " - "
+             << cities[to] << " : "
+             << minimum << " km" << endl;
+
+        totalDistance += minimum;
+        edgesCount++;
+    }
+
+    cout << "Total MST Distance: "
+         << totalDistance << " km" << endl;
+}
